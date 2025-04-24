@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="600" version="1.1" viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+ <rect width="800" height="600" fill="#f0f0f0"/>
+ <g transform="matrix(1.3333 0 0 -1.3333 0 800)">
+  <path d="m450 375h-300v-200h300zm-285-15h270v-170h-270z" fill="#666"/>
+  <path d="m475 150h-350v-25h350z" fill="#666"/>
+  <text transform="matrix(1 0 0 -1 250 300)" fill="#666" font-family="Arial" font-size="24">
+   <tspan x="0 0" y="0">No Image</tspan>
+  </text>
+ </g>
+</svg> 
