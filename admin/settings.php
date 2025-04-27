@@ -5,20 +5,41 @@ if (!isset($_SESSION["admin_loggedin"]) || $_SESSION["admin_loggedin"] !== true)
     exit;
 }
 
-require_once "../includes/config.php";
+require_once "./includes/config.php";
 
-// Handle settings update
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if (isset($_POST['update_profile'])) {
-        // Update profile logic here
-    } elseif (isset($_POST['update_password'])) {
-        // Update password logic here
-    } elseif (isset($_POST['update_site'])) {
-        // Update site settings logic here
-    }
+// Test database connection
+if (!$conn) {
+    die("Database connection failed: " . mysqli_connect_error());
 }
-?>
 
+// Initialize variables
+$admin_name = isset($_SESSION['admin_name']) ? $_SESSION['admin_name'] : '';
+$admin_email = isset($_SESSION['admin_email']) ? $_SESSION['admin_email'] : '';
+
+$site_name = '';
+$site_description = '';
+
+// Fetch site settings with safety check
+$site_query = "SELECT name, description FROM site_settings WHERE id = 1";
+$result = mysqli_query($conn, $site_query);
+
+if ($result) {
+    if (mysqli_num_rows($result) > 0) {
+        $row = mysqli_fetch_assoc($result);
+        $site_name = $row['name'];
+        $site_description = $row['description'];
+    } else {
+        // No data found
+        $site_name = '';
+        $site_description = '';
+    }
+} else {
+    // Query failed
+    $site_name = '';
+    $site_description = '';
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -52,7 +73,56 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                 <div class="card">
                     <div class="card-body">
-                        <!-- Your settings form code here -->
+                        <h4>Update Profile</h4>
+                        <form method="POST" action="">
+                            <div class="mb-3">
+                                <label for="admin_name" class="form-label">Admin Name</label>
+                                <input type="text" class="form-control" id="admin_name" name="admin_name" value="<?php echo htmlspecialchars($admin_name); ?>" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="admin_email" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="admin_email" name="admin_email" value="<?php echo htmlspecialchars($admin_email); ?>" required>
+                            </div>
+                            <button type="submit" name="update_profile" class="btn btn-primary">Update Profile</button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="card mt-4">
+                    <div class="card-body">
+                        <h4>Change Password</h4>
+                        <form method="POST" action="">
+                            <div class="mb-3">
+                                <label for="current_password" class="form-label">Current Password</label>
+                                <input type="password" class="form-control" id="current_password" name="current_password" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="new_password" class="form-label">New Password</label>
+                                <input type="password" class="form-control" id="new_password" name="new_password" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="confirm_password" class="form-label">Confirm Password</label>
+                                <input type="password" class="form-control" id="confirm_password" name="confirm_password" required>
+                            </div>
+                            <button type="submit" name="update_password" class="btn btn-primary">Change Password</button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="card mt-4">
+                    <div class="card-body">
+                        <h4>Site Settings</h4>
+                        <form method="POST" action="">
+                            <div class="mb-3">
+                                <label for="site_name" class="form-label">Site Name</label>
+                                <input type="text" class="form-control" id="site_name" name="site_name" value="<?php echo htmlspecialchars($site_name); ?>" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="site_description" class="form-label">Site Description</label>
+                                <textarea class="form-control" id="site_description" name="site_description" rows="3" required><?php echo htmlspecialchars($site_description); ?></textarea>
+                            </div>
+                            <button type="submit" name="update_site" class="btn btn-primary">Update Site Settings</button>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -61,4 +131,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-</html> 
+</html>

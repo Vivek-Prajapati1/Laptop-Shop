@@ -214,7 +214,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     }
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -222,23 +221,28 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Product - Admin Panel</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        .sidebar {
-            min-height: 100vh;
-            background: #343a40;
-            color: white;
+        :root {
+            --primary-bg: #ffffff;
+            --secondary-bg: #343a40;
+            --text-primary: #212529;
+            --text-secondary: #6c757d;
+            --accent-color: #0d6efd;
         }
-        .sidebar a {
-            color: white;
-            text-decoration: none;
+        
+        body {
+            background-color: var(--primary-bg);
+            color: var(--text-primary);
+            overflow-x: hidden;
         }
-        .sidebar a:hover {
-            color: #f8f9fa;
-        }
+        
         .main-content {
-            padding: 20px;
+            margin-left: 250px;
+            padding: 30px;
+            min-height: 100vh;
         }
+        
         .current-image {
             max-width: 200px;
             border: 1px solid #ddd;
@@ -246,60 +250,34 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             padding: 4px;
             margin-top: 10px;
         }
+        
         .form-group.mb-3 label {
-        font-weight: bold;
+            font-weight: bold;
         }
+        
         .form-check-label {
-        font-weight: bold;
-    }
+            font-weight: bold;
+        }
+        
+        @media (max-width: 768px) {
+            .main-content {
+                margin-left: 0;
+                padding: 15px;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="container-fluid">
         <div class="row">
-            <!-- Sidebar -->
-            <div class="col-md-3 col-lg-2 sidebar p-3">
-                <h3 class="mb-4">Admin Panel</h3>
-                <ul class="nav flex-column">
-                    <li class="nav-item mb-2">
-                        <a href="index.php" class="nav-link">
-                            <i class="bi bi-speedometer2"></i> Dashboard
-                        </a>
-                    </li>
-                    <li class="nav-item mb-2">
-                        <a href="products.php" class="nav-link active">
-                            <i class="bi bi-laptop"></i> Products
-                        </a>
-                    </li>
-                    <li class="nav-item mb-2">
-                        <a href="orders.php" class="nav-link">
-                            <i class="bi bi-cart"></i> Orders
-                        </a>
-                    </li>
-                    <li class="nav-item mb-2">
-                        <a href="users.php" class="nav-link">
-                            <i class="bi bi-people"></i> Users
-                        </a>
-                    </li>
-                    <li class="nav-item mb-2">
-                        <a href="categories.php" class="nav-link">
-                            <i class="bi bi-tags"></i> Categories
-                        </a>
-                    </li>
-                    <li class="nav-item mt-4">
-                        <a href="logout.php" class="nav-link text-danger">
-                            <i class="bi bi-box-arrow-right"></i> Logout
-                        </a>
-                    </li>
-                </ul>
-            </div>
+            <?php include 'includes/sidebar.php'; ?>
 
             <!-- Main Content -->
-            <div class="col-md-9 col-lg-10 main-content">
+            <div class="col main-content">
                 <div class="d-flex justify-content-between align-items-center mb-4">
-                    <h2> <b>Edit Product</b></h2>
+                    <h2><b>Edit Product</b></h2>
                     <a href="products.php" class="btn btn-secondary">
-                        <i class="bi bi-arrow-left"></i> Back to Products
+                        <i class="fas fa-arrow-left"></i> Back to Products
                     </a>
                 </div>
 
@@ -319,7 +297,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                                         <label>Category</label>
                                         <select name="category_id" class="form-control <?php echo (!empty($category_err)) ? 'is-invalid' : ''; ?>">
                                             <option value="">Select Category</option>
-                                            <?php while($category = mysqli_fetch_assoc($categories_result)): ?>
+                                            <?php 
+                                            // Reset the pointer for categories result
+                                            mysqli_data_seek($categories_result, 0);
+                                            while($category = mysqli_fetch_assoc($categories_result)): ?>
                                                 <option value="<?php echo $category['id']; ?>" <?php echo ($category_id == $category['id']) ? 'selected' : ''; ?>>
                                                     <?php echo htmlspecialchars($category['name']); ?>
                                                 </option>
@@ -369,7 +350,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                                 <div class="form-check">
                                     <input type="checkbox" class="form-check-input" id="featured" name="featured" value="1" 
                                            <?php echo $featured ? 'checked' : ''; ?>>
-                                    <label class="form-check-label " for="featured">Featured Product</label>
+                                    <label class="form-check-label" for="featured">Featured Product</label>
                                 </div>
                             </div>
                             
@@ -385,4 +366,4 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-</html> 
+</html>

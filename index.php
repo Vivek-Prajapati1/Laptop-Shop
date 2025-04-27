@@ -66,9 +66,151 @@ if (mysqli_num_rows($result) == 0) {
             <!-- Image Section -->
             <div class="relative fade-in-right">
                 <div class="relative z-10 transform hover:scale-105 transition-transform duration-500">
-                    <div class="glass-card p-6 rounded-2xl">
-                        <img src="uploads/laptop_hub_bg.webp" alt="Featured Laptop" class="w-full h-auto rounded-lg">
-                    </div>
+
+
+<!-- Container -->
+<div class="flex justify-center items-center min-h-[400px]  p-4">
+  <!-- Slideshow Card -->
+  <div class="relative bg-[#4169E1] rounded-3xl shadow-2xl p-4 overflow-hidden max-w-4xl w-full">
+    <!-- Image Slides -->
+    <div id="slider" class="relative h-full">
+      <!-- Navigation Arrows -->
+      <button class="absolute left-2 top-1/2 -translate-y-1/2 z-10 w-10 h-10 flex items-center justify-center rounded-full bg-black/30 hover:bg-black/50 text-white transition" onclick="prevSlide()">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        </svg>
+      </button>
+      
+      <button class="absolute right-2 top-1/2 -translate-y-1/2 z-10 w-10 h-10 flex items-center justify-center rounded-full bg-black/30 hover:bg-black/50 text-white transition" onclick="nextSlide()">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        </svg>
+      </button>
+
+      <!-- Slide 1 -->
+      <div class="slide w-full h-full flex items-center justify-center">
+        <img src="images1/hp.png" alt="Laptop 1" 
+             class="w-full h-auto max-h-[350px] object-contain rounded-xl"
+             onerror="this.onerror=null; this.src='images/default-laptop.jpg'">
+      </div>
+      <!-- Slide 2 -->
+      <div class="slide w-full h-full flex items-center justify-center hidden">
+        <img src="images1/Macbookm1.png" alt="Laptop 2" 
+             class="w-full h-auto max-h-[350px] object-contain rounded-xl"
+             onerror="this.onerror=null; this.src='images/default-laptop.jpg'">
+      </div>
+      <!-- Slide 3 -->
+      <div class="slide w-full h-full flex items-center justify-center hidden">
+        <img src="uploads/laptop_hub_bg.webp" alt="Laptop 3" 
+             class="w-full h-auto max-h-[350px] object-contain rounded-xl"
+             onerror="this.onerror=null; this.src='images/default-laptop.jpg'">
+      </div>
+      
+      <!-- Navigation Dots -->
+      <div class="dots absolute bottom-4 left-0 right-0 flex justify-center space-x-2">
+        <button class="dot w-3 h-3 rounded-full bg-white/80 transition" onclick="goToSlide(0)"></button>
+        <button class="dot w-3 h-3 rounded-full bg-white/30 hover:bg-white/50 transition" onclick="goToSlide(1)"></button>
+        <button class="dot w-3 h-3 rounded-full bg-white/30 hover:bg-white/50 transition" onclick="goToSlide(2)"></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- JavaScript for Slideshow -->
+<script>
+let currentSlide = 0;
+const slides = document.querySelectorAll('#slider .slide');
+const dots = document.querySelectorAll('#slider .dots .dot');
+
+function showSlide(index) {
+  // Hide all slides
+  slides.forEach(slide => slide.classList.add('hidden'));
+  // Show current slide
+  slides[index].classList.remove('hidden');
+  
+  // Update dots
+  dots.forEach((dot, i) => {
+    if (i === index) {
+      dot.classList.remove('bg-white/30');
+      dot.classList.add('bg-white/80');
+    } else {
+      dot.classList.remove('bg-white/80');
+      dot.classList.add('bg-white/30');
+    }
+  });
+  
+  currentSlide = index;
+}
+
+function nextSlide() {
+  currentSlide = (currentSlide + 1) % slides.length;
+  showSlide(currentSlide);
+  // Reset timer when manually navigating
+  resetTimer();
+}
+
+function prevSlide() {
+  currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+  showSlide(currentSlide);
+  // Reset timer when manually navigating
+  resetTimer();
+}
+
+function goToSlide(index) {
+  currentSlide = index;
+  showSlide(currentSlide);
+  // Reset timer when manually navigating
+  resetTimer();
+}
+
+let slideInterval;
+
+function startTimer() {
+  slideInterval = setInterval(nextSlide, 3000);
+}
+
+function resetTimer() {
+  clearInterval(slideInterval);
+  startTimer();
+}
+
+// Pause on hover
+document.getElementById('slider').addEventListener('mouseenter', () => {
+  clearInterval(slideInterval);
+});
+
+document.getElementById('slider').addEventListener('mouseleave', () => {
+  startTimer();
+});
+
+// Initialize
+showSlide(currentSlide);
+startTimer();
+</script>
+
+<style>
+.slide {
+  transition: opacity 0.5s ease-in-out;
+}
+
+/* Arrow buttons */
+.arrow-btn {
+  backdrop-filter: blur(4px);
+  transition: all 0.2s ease;
+}
+
+.arrow-btn:hover {
+  transform: scale(1.1);
+}
+
+/* Dot navigation */
+.dot {
+  transition: background-color 0.3s ease;
+}
+</style>
+
+
+
                 </div>
                 <!-- Decorative Elements -->
                 <div class="absolute -top-4 -right-4 w-24 h-24 bg-yellow-400/20 rounded-full blur-xl"></div>

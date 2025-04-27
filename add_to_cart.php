@@ -28,7 +28,7 @@ $result = mysqli_stmt_get_result($check_stmt);
 if (mysqli_num_rows($result) > 0) {
     // Update existing cart item
     $cart_item = mysqli_fetch_assoc($result);
-    $new_quantity = $cart_item['quantity'] + $quantity;
+    $new_quantity = max(1, $cart_item['quantity'] + $quantity);
     
     $update_query = "UPDATE cart SET quantity = ? WHERE cart_id = ?";
     $update_stmt = mysqli_prepare($conn, $update_query);

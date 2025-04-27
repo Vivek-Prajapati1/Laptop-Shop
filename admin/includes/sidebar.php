@@ -24,8 +24,9 @@ $current_page = basename($_SERVER['PHP_SELF']);
             <i class="fas fa-cog"></i> Settings
         </a>
         <a href="logout.php">
-            <i class="fas fa-sign-out-alt"></i> Logout
-        </a>
+  <i class="fas fa-sign-out-alt"></i>
+  <span style="color: red;">Logout</span>
+</a>
     </nav>
 </div>
 
