@@ -38,18 +38,19 @@ A fully functional online laptop shopping website built with PHP, MySQL, and mod
 ![Dashboard](https://github.com/user-attachments/assets/d40ed3bd-08fa-410b-8065-51ad9511f654)
 
 
+
 ## 📱 Responsive Design
 
 ### 🖥️ Desktop View
-![Desktop View]![Screenshot 2025-04-27 145015](https://github.com/user-attachments/assets/5832bdf1-346d-4b72-acf3-d5a986f269e1)
+![Desktop View](https://github.com/user-attachments/assets/5832bdf1-346d-4b72-acf3-d5a986f269e1)
 
 
 ### 📱 Mobile View
-![Mobile View]![Screenshot 2025-04-27 144853](https://github.com/user-attachments/assets/0b561bd6-1ab3-436f-a756-f51288df22c1)
+![Mobile View](https://github.com/user-attachments/assets/0b561bd6-1ab3-436f-a756-f51288df22c1)
 
 
 ### 📟 Tablet View
-![Tablet View]![Screenshot 2025-04-27 144936](https://github.com/user-attachments/assets/691aaa1d-fa67-41c9-b118-59c42819f03e)
+![Tablet View](https://github.com/user-attachments/assets/691aaa1d-fa67-41c9-b118-59c42819f03e)
 
 
 ## Tech Stack
