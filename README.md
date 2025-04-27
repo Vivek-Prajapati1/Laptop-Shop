@@ -4,15 +4,16 @@
 
 A fully functional online laptop shopping website built with PHP, MySQL, and modern frontend technologies.
 
-## Features
+## 🚀 Features
 
-- Responsive design using Bootstrap 5 and Tailwind CSS
-- User authentication (login/register)
-- Product listing with filters
-- Shopping cart functionality
-- Checkout system
-- Admin panel for product management
+- User login and signup
+- Browse laptops by category
+- Add laptops to cart
+- Admin dashboard (Add, Edit, Delete products)
+- Responsive design
+- Secure authentication
 
+  
 ## 🖥️ Screenshots
 
 ### 📝 Home Page
@@ -32,6 +33,7 @@ A fully functional online laptop shopping website built with PHP, MySQL, and mod
 
 ### 🛒 Cart Page
 ![Cart Page](https://github.com/user-attachments/assets/758e1e10-2f32-4158-9758-c4542b37b63f)
+
 
 
 ### 🛠️ Admin Dashboard
@@ -99,6 +101,18 @@ The project uses the following main tables:
 - Cart
 - Orders
 - OrderDetails
+
+## 🧰 Installation Steps
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/Vivek-Prajapati1/LaptopShop.git
+
+📞 Contact
+GitHub: Vivek-Prajapati1
+
+Email: vivekanurag30@gmail.com   
+   
 
 ## License
 
