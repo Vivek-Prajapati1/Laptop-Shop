@@ -1,6 +1,4 @@
 
-
-
 # LaptopShop - Online Laptop Store
 
 A fully functional online laptop shopping website built with PHP, MySQL, and modern frontend technologies.
@@ -25,25 +23,25 @@ A fully functional online laptop shopping website built with PHP, MySQL, and mod
 
 
 ### 🆕 Register Page
-![Signup Page]![Screenshot 2025-04-27 141811](https://github.com/user-attachments/assets/fe4d5c31-aa50-4aa3-afb8-71764bb3f9d8)
+![Signup Page]!(https://github.com/user-attachments/assets/fe4d5c31-aa50-4aa3-afb8-71764bb3f9d8)
 
 ### 🛍️ Shop Page
 ![Shop Page](https://github.com/user-attachments/assets/4a3f2500-d0ad-4306-8be0-adce72d6a53f)
 
 
 ### 🛒 Cart Page
-![Cart Page]![Screenshot 2025-04-27 142442](https://github.com/user-attachments/assets/758e1e10-2f32-4158-9758-c4542b37b63f)
+![Cart Page]!(https://github.com/user-attachments/assets/758e1e10-2f32-4158-9758-c4542b37b63f)
 
 
 ### 🛠️ Admin Dashboard
-![Dashboard]![Screenshot 2025-04-27 141928](https://github.com/user-attachments/assets/d40ed3bd-08fa-410b-8065-51ad9511f654)
+![Dashboard]!(https://github.com/user-attachments/assets/d40ed3bd-08fa-410b-8065-51ad9511f654)
 
 
 
 ## Tech Stack
 
 - Frontend: HTML5, CSS3, Bootstrap 5, Tailwind CSS
-- Backend: PHP (Vanilla)
+- Backend: PHP 
 - Database: MySQL
 - Server: XAMPP/Apache
 
