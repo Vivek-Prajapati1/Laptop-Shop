@@ -108,7 +108,7 @@ The project uses the following main tables:
    ```bash
    git clone https://github.com/Vivek-Prajapati1/LaptopShop.git
 
-📞 Contact
+## 📞 Contact
 GitHub: Vivek-Prajapati1
 
 Email: vivekanurag30@gmail.com   
